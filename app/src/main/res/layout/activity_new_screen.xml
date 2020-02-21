@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewScreen">
+
+    <TextView
+        android:id="@+id/text_new"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#2033b5e5"
+        android:textColor="@android:color/holo_blue_dark"
+        android:padding="10sp"
+        android:text="You got connected to\n\n Mobile Data \n\n\nSuccessfully!!!\n"
+        android:gravity="center|start"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="30sp" />
+
+</RelativeLayout>
