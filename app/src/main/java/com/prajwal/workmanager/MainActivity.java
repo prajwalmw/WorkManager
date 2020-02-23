@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.work.Constraints;
 import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
+import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
-     OneTimeWorkRequest oneTimeWorkRequest;
+    // OneTimeWorkRequest oneTimeWorkRequest;
+    public static PeriodicWorkRequest periodicWorkRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,13 +22,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
        // TextView textView = findViewById(R.id.text);
 
-        oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorker.class)
+        /*oneTimeWorkRequest = new OneTimeWorkRequest.Builder(MyWorker.class)
                 .setConstraints(new Constraints.Builder()
-                        .setRequiredNetworkType(NetworkType.CONNECTED)
+                        .setRequiredNetworkType(NetworkType.METERED)
                         .build())
                 .build();
 
 
-        WorkManager.getInstance().enqueue(oneTimeWorkRequest);
+        WorkManager.getInstance().enqueue(oneTimeWorkRequest);*/
+
+
+        periodicWorkRequest = new PeriodicWorkRequest.Builder(MyWorker.class,15, TimeUnit.MINUTES)
+                .setConstraints(new Constraints.Builder()
+                        .setRequiredNetworkType(NetworkType.METERED)
+                        .build())
+                .build();
+
+        WorkManager.getInstance().enqueue(periodicWorkRequest);
     }
 }
